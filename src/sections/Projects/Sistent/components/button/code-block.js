@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Button, SistentThemeProvider } from "@layer5/sistent";
-import { useStyledDarkMode } from "../../../../../theme/app/useStyledDarkMode";
+// import { Button, SistentThemeProvider } from "@layer5/sistent";
+// import { useStyledDarkMode } from "../../../../../theme/app/useStyledDarkMode";
+import Code from "../../../../../components/CodeBlock";
 
 export const CodeBlock = ({ name, code }) => {
   const [showCode, setShowCode] = useState(false);
-  const { isDark } = useStyledDarkMode();
+  // const { isDark } = useStyledDarkMode();
 
   const onChange = () => {
     setShowCode((prev) => !prev);
@@ -43,12 +44,7 @@ export const CodeBlock = ({ name, code }) => {
       </label>
       {showCode && (
         <div className="code-container">
-          <pre className="code">
-            <code lang="javascript">{code}</code>
-          </pre>
-          <SistentThemeProvider initialMode={isDark ? "dark" : "light"}>
-            <Button className="copy-button" onClick={handleCopy} style={{ position: "absolute", top: "12px", right: "12px" }} variant="contained">COPY</Button>
-          </SistentThemeProvider>
+          <Code>{code}</Code>
         </div>
       )}
     </div>
